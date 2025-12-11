@@ -1,15 +1,5 @@
-# Chat-App-RSA-and-AES
+# CryptoTalk - Chat App
 A secure, hybrid AES+RSA chat application with a modern GUI built using CustomTkinter.
-
----
-
-**It features:**
-
-- End-to-end AES-encrypted chat messages.
-- RSA key exchange for secure AES session keys.
-- Emoji support 😍.
-- Light theme with orange accents.
-- Phone-style chat layout.
 
 ---
 
@@ -20,6 +10,43 @@ A secure, hybrid AES+RSA chat application with a modern GUI built using CustomTk
 3. User-friendly GUI: Scrollable chat window, message bubbles, and emoji picker.
 4. Phone-style design: Compact window suitable for a mobile-like interface.
 5. Light Mode Theme: Professional light background with orange accent colors.
+
+---
+
+**Cryptography Algorithms Used**
+
+1. AES (Advanced Encryption Standard) – Symmetric Encryption:
+
+Used to encrypt the actual message.
+Fast and efficient for large amounts of data.
+Mode: CBC (Cipher Block Chaining)
+Padding: PKCS7 to ensure the message fits the AES block size.
+
+2. RSA (Rivest–Shamir–Adleman) – Asymmetric Encryption
+
+Used to encrypt the AES key for secure transmission.
+Ensures that only the receiver with the private key can decrypt the AES key.
+Key Size: 2048 bits
+
+3. OAEP (Optimal Asymmetric Encryption Padding)
+
+A secure padding scheme used with RSA encryption.
+Protects RSA from certain cryptographic attacks.
+
+4. SHA-256 (Secure Hash Algorithm)
+
+Used inside OAEP for padding in RSA encryption.
+Ensures the padding is secure and prevents patterns that attackers could exploit.
+Base64 Encoding
+Converts encrypted bytes into a string-safe format for storage or transmission.
+
+---
+
+**How They Work Together**
+
+AES encrypts the message → produces a ciphertext.
+RSA + OAEP + SHA-256 encrypts the AES key → produces a secure key that can be safely shared.
+Receiver decrypts the AES key using RSA private key, then decrypts the message using AES.
 
 ---
 
